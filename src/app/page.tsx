@@ -5,7 +5,6 @@ import { getFirestore, collection, getDocs, orderBy, query, Timestamp } from 'fi
 import { app } from '@/lib/firebase';
 import { Flower2 } from 'lucide-react';
 import Image from 'next/image';
-import { generateTulipImage } from '@/ai/flows/generate-tulip-image';
 
 async function getWishes(): Promise<Wish[]> {
   try {
@@ -34,19 +33,8 @@ async function getWishes(): Promise<Wish[]> {
   }
 }
 
-async function getTulipImages() {
-  try {
-    const imagePromises = Array(6).fill(null).map(() => generateTulipImage());
-    const results = await Promise.all(imagePromises);
-    return results.map(r => r.imageUrl);
-  } catch (e) {
-    console.error('Failed to generate tulip images', e);
-    return [];
-  }
-}
-
 export default async function Home() {
-  const [wishes, tulipImages] = await Promise.all([getWishes(), getTulipImages()]);
+  const wishes = await getWishes();
 
   const defaultTulips = [
     "https://www.transparentpng.com/thumb/tulip/mD3o2Y-tulip-vector-free-download-clipart.png",
@@ -57,8 +45,7 @@ export default async function Home() {
     "https://www.transparentpng.com/thumb/tulip/w2R37A-tulip-hd-photo.png"
   ];
   
-  const images = tulipImages.length > 0 ? tulipImages : defaultTulips;
-
+  const images = defaultTulips;
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
