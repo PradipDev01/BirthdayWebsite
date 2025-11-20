@@ -36,17 +36,8 @@ async function getWishes(): Promise<Wish[]> {
 export default async function Home() {
   const wishes = await getWishes();
 
-  const defaultTulips = [
-    "https://www.transparentpng.com/thumb/tulip/mD3o2Y-tulip-vector-free-download-clipart.png",
-    "https://www.transparentpng.com/thumb/tulip/V4i5sJ-tulip-picture.png",
-    "https://www.transparentpng.com/thumb/tulip/yI4k3g-tulip-clipart-transparent.png",
-    "https://www.transparentpng.com/thumb/tulip/zJWl65-pink-tulip-background.png",
-    "https://www.transparentpng.com/thumb/tulip/tulip-png-icon-23.png",
-    "https://www.transparentpng.com/thumb/tulip/w2R37A-tulip-hd-photo.png"
-  ];
+  const tulipImage = "https://storage.googleapis.com/project-spark-325313.appspot.com/static/gen-ai/user-request-images/2024-05-22/3ca3123b-010f-488f-a3ac-173673752e50.png";
   
-  const images = defaultTulips;
-
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <Header />
@@ -65,12 +56,12 @@ export default async function Home() {
           </div>
            {/* Floating Tulips */}
            <div className="absolute inset-0 z-0 pointer-events-none">
-            <Image src={images[0]} alt="Floating Tulip" width={80} height={80} className="absolute tulip-1" />
-            <Image src={images[1]} alt="Floating Tulip" width={60} height={60} className="absolute tulip-2" />
-            <Image src={images[2]} alt="Floating Tulip" width={100} height={100} className="absolute tulip-3" />
-            <Image src={images[3]} alt="Floating Tulip" width={70} height={70} className="absolute tulip-4" />
-            <Image src={images[4]} alt="Floating Tulip" width={90} height={90} className="absolute tulip-5" />
-            <Image src={images[5]} alt="Floating Tulip" width={50} height={50} className="absolute tulip-6" />
+            <Image src={tulipImage} alt="Floating Tulip" width={80} height={80} className="absolute tulip-1" />
+            <Image src={tulipImage} alt="Floating Tulip" width={60} height={60} className="absolute tulip-2" />
+            <Image src={tulipImage} alt="Floating Tulip" width={100} height={100} className="absolute tulip-3" />
+            <Image src={tulipImage} alt="Floating Tulip" width={70} height={70} className="absolute tulip-4" />
+            <Image src={tulipImage} alt="Floating Tulip" width={90} height={90} className="absolute tulip-5" />
+            <Image src={tulipImage} alt="Floating Tulip" width={50} height={50} className="absolute tulip-6" />
           </div>
         </section>
 
