@@ -10,18 +10,22 @@ async function getWishes(): Promise<Wish[]> {
   try {
     const db = getFirestore(app);
     const wishesCol = collection(db, 'wishes');
-    const q = query(wishesCol, orderBy('createdAt', 'desc'));
+    // The orderBy clause was removed to prevent a crash.
+    // A composite index is needed in Firestore to support this query.
+    const q = query(wishesCol);
     const wishesSnapshot = await getDocs(q);
     const wishesList = wishesSnapshot.docs.map(doc => {
       const data = doc.data();
+      const createdAt = data.createdAt as Timestamp | undefined;
       return {
         id: doc.id,
         name: data.name,
         message: data.message,
-        createdAt: (data.createdAt as Timestamp).toDate().toISOString(),
+        createdAt: createdAt ? createdAt.toDate().toISOString() : new Date().toISOString(),
       };
     });
-    return wishesList;
+    // Sort wishes by date client-side as a temporary measure.
+    return wishesList.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
   } catch (error) {
     console.error("Error fetching wishes: ", error);
     // In a real app, you'd want better error handling.
