@@ -4,6 +4,7 @@ import { WishesDisplay, type Wish } from '@/components/wishes-display';
 import { getFirestore, collection, getDocs, orderBy, query, Timestamp } from 'firebase/firestore';
 import { app } from '@/lib/firebase';
 import { Flower2 } from 'lucide-react';
+import Image from 'next/image';
 
 async function getWishes(): Promise<Wish[]> {
   try {
@@ -36,8 +37,8 @@ export default async function Home() {
     <div className="flex flex-col min-h-screen bg-background">
       <Header />
       <main className="flex-1">
-        <section id="hero" className="w-full py-20 md:py-32 lg:py-40 text-center animate-in fade-in duration-1000">
-          <div className="container px-4 md:px-6">
+        <section id="hero" className="relative overflow-hidden w-full py-20 md:py-32 lg:py-40 text-center animate-in fade-in duration-1000">
+          <div className="container px-4 md:px-6 relative z-10">
             <div className="space-y-4 max-w-3xl mx-auto">
               <h1 className="font-headline text-4xl md:text-6xl lg:text-7xl tracking-tighter">
                 Happy Birthday, My Love
@@ -47,6 +48,15 @@ export default async function Home() {
               </p>
               <Flower2 className="h-12 w-12 mx-auto text-primary" />
             </div>
+          </div>
+           {/* Floating Tulips */}
+           <div className="absolute inset-0 z-0 pointer-events-none">
+            <Image src="https://www.transparentpng.com/thumb/tulip/mD3o2Y-tulip-vector-free-download-clipart.png" alt="Floating Tulip" width={80} height={80} className="absolute tulip-1" />
+            <Image src="https://www.transparentpng.com/thumb/tulip/V4i5sJ-tulip-picture.png" alt="Floating Tulip" width={60} height={60} className="absolute tulip-2" />
+            <Image src="https://www.transparentpng.com/thumb/tulip/yI4k3g-tulip-clipart-transparent.png" alt="Floating Tulip" width={100} height={100} className="absolute tulip-3" />
+            <Image src="https://www.transparentpng.com/thumb/tulip/zJWl65-pink-tulip-background.png" alt="Floating Tulip" width={70} height={70} className="absolute tulip-4" />
+            <Image src="https://www.transparentpng.com/thumb/tulip/tulip-png-icon-23.png" alt="Floating Tulip" width={90} height={90} className="absolute tulip-5" />
+            <Image src="https://www.transparentpng.com/thumb/tulip/w2R37A-tulip-hd-photo.png" alt="Floating Tulip" width={50} height={50} className="absolute tulip-6" />
           </div>
         </section>
 

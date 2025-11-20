@@ -82,3 +82,56 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  @keyframes float {
+    0% {
+      transform: translateY(0px) rotate(0deg);
+      opacity: 1;
+    }
+    50% {
+      transform: translateY(-25px) rotate(15deg);
+    }
+    100% {
+      transform: translateY(-120vh) rotate(-20deg);
+      opacity: 0;
+    }
+  }
+
+  .tulip-1 {
+    animation: float 12s infinite;
+    left: 10%;
+    bottom: -20%;
+    animation-delay: 0s;
+  }
+  .tulip-2 {
+    animation: float 15s infinite;
+    left: 25%;
+    bottom: -20%;
+    animation-delay: 2s;
+  }
+  .tulip-3 {
+    animation: float 10s infinite;
+    left: 40%;
+    bottom: -20%;
+    animation-delay: 5s;
+  }
+  .tulip-4 {
+    animation: float 18s infinite;
+    left: 60%;
+    bottom: -20%;
+    animation-delay: 1s;
+  }
+  .tulip-5 {
+    animation: float 14s infinite;
+    left: 80%;
+    bottom: -20%;
+    animation-delay: 3s;
+  }
+  .tulip-6 {
+    animation: float 16s infinite;
+    left: 90%;
+    bottom: -20%;
+    animation-delay: 6s;
+  }
+}
