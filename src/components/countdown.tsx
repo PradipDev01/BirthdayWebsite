@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { WishSubmissionDialog } from './wish-submission-dialog';
 import { Button } from './ui/button';
-import { PenSquare } from 'lucide-react';
+import { Feather } from 'lucide-react';
 
 type CountdownProps = {
   targetDate: string;
@@ -78,7 +78,7 @@ export function Countdown({ targetDate }: CountdownProps) {
           <WishSubmissionDialog
             trigger={
               <Button variant="ghost">
-                <PenSquare className="mr-2 h-4 w-4" />
+                <Feather className="mr-2 h-4 w-4" />
                 Wish her (Rajanya) in advance
               </Button>
             }
