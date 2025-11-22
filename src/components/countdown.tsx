@@ -79,7 +79,7 @@ export function Countdown({ targetDate }: CountdownProps) {
             trigger={
               <Button 
                 variant="outline"
-                className="bg-white/10 border-white/20 text-white backdrop-blur-sm hover:bg-white/20 hover:text-white shadow-lg"
+                className="bg-slate-700 border-white/20 text-white backdrop-blur-sm hover:bg-slate-800 hover:text-white shadow-lg"
               >
                 <Feather className="mr-2 h-4 w-4" />
                 Wish Rajanya in advance

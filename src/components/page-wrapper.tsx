@@ -7,7 +7,7 @@ export function PageWrapper({ children }: { children: React.ReactNode }) {
   const [isReady, setIsReady] = useState(false);
   const [isTimeUp, setIsTimeUp] = useState(false);
   
-  const targetDate = new Date('2025-11-24T23:59:00');
+  const targetDate = new Date('2025-11-24T00:00:00');
 
   useEffect(() => {
     const checkTime = () => {
