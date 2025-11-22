@@ -1,6 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { WishSubmissionDialog } from './wish-submission-dialog';
+import { Button } from './ui/button';
+import { PenSquare } from 'lucide-react';
 
 type CountdownProps = {
   targetDate: string;
@@ -70,7 +73,17 @@ export function Countdown({ targetDate }: CountdownProps) {
         <div className="flex justify-center gap-4 md:gap-8 p-4 rounded-lg">
           {hasTimeLeft ? timerComponents : <span>Time's up!</span>}
         </div>
-        <p className="font-body text-lg text-primary-foreground/80">Get ready for a special surprise!</p>
+        <div className="flex flex-col items-center space-y-4">
+          <p className="font-body text-lg text-primary-foreground/80">Get ready for a special surprise!</p>
+          <WishSubmissionDialog
+            trigger={
+              <Button variant="ghost">
+                <PenSquare className="mr-2 h-4 w-4" />
+                Wish her (Rajanya) in advance
+              </Button>
+            }
+          />
+        </div>
       </div>
     </div>
   );

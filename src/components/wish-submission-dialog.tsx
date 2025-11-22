@@ -12,17 +12,24 @@ import {
 import { WishSubmissionForm } from './wish-submission-form';
 import { useState } from 'react';
 import { PenSquare } from 'lucide-react';
+import type { ReactNode } from 'react';
 
-export function WishSubmissionDialog() {
+type WishSubmissionDialogProps = {
+  trigger?: ReactNode;
+};
+
+export function WishSubmissionDialog({ trigger }: WishSubmissionDialogProps) {
   const [open, setOpen] = useState(false);
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="ghost">
-          <PenSquare className="mr-2 h-4 w-4" />
-          Leave a Wish
-        </Button>
+        {trigger || (
+          <Button variant="ghost">
+            <PenSquare className="mr-2 h-4 w-4" />
+            Leave a Wish
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
