@@ -30,18 +30,22 @@ const calculateTimeLeft = (targetDate: string): TimeLeft => {
 };
 
 export function Countdown({ targetDate }: CountdownProps) {
-  const [timeLeft, setTimeLeft] = useState<TimeLeft>(calculateTimeLeft(targetDate));
+  const [timeLeft, setTimeLeft] = useState<TimeLeft>({});
 
   useEffect(() => {
-    const timer = setTimeout(() => {
+    // Set initial time left
+    setTimeLeft(calculateTimeLeft(targetDate));
+
+    // Update time left every second
+    const timer = setInterval(() => {
       setTimeLeft(calculateTimeLeft(targetDate));
     }, 1000);
 
-    return () => clearTimeout(timer);
-  });
+    return () => clearInterval(timer);
+  }, [targetDate]);
 
   const timerComponents = Object.entries(timeLeft).map(([interval, value]) => {
-    if (value === undefined) {
+    if (value === undefined || isNaN(value)) {
       return null;
     }
 
@@ -57,12 +61,14 @@ export function Countdown({ targetDate }: CountdownProps) {
     );
   });
 
+  const hasTimeLeft = Object.values(timeLeft).some(value => value !== undefined && value > 0);
+
   return (
     <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-background/50 backdrop-blur-md">
       <div className="text-center text-primary-foreground space-y-8 animate-in fade-in duration-1000">
         <h2 className="font-headline text-3xl md:text-4xl">The celebration begins in...</h2>
         <div className="flex justify-center gap-4 md:gap-8 p-4 rounded-lg">
-          {timerComponents.length && Object.keys(timeLeft).length > 0 ? timerComponents : <span>Time's up!</span>}
+          {hasTimeLeft ? timerComponents : <span>Time's up!</span>}
         </div>
         <p className="font-body text-lg text-primary-foreground/80">Get ready for a special surprise!</p>
       </div>
