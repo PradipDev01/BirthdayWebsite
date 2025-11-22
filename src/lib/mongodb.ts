@@ -1,6 +1,6 @@
 import { MongoClient } from 'mongodb';
 
-const uri = "mongodb+srv://pradip:pradip2004@pradipdb.udxnbyf.mongodb.net/";
+const uri = process.env.MONGO_URI || "";
 const options = {};
 
 let client: MongoClient;
