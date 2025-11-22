@@ -50,7 +50,7 @@ export default async function Home() {
                 alt="A cute cat"
                 width={150}
                 height={150}
-                className="mx-auto rounded-full shadow-lg"
+                className="mx-auto"
               />
               <h1 className="font-headline text-4xl md:text-6xl lg:text-7xl tracking-tighter">
                 Happy Birthday, My Love
