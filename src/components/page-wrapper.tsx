@@ -6,8 +6,8 @@ import { Countdown } from './countdown';
 export function PageWrapper({ children }: { children: React.ReactNode }) {
   const [isTimeUp, setIsTimeUp] = useState(false);
   
-  // Set the target date to November 23, 2024, at 11:59:00 PM
-  const targetDate = new Date('2024-11-23T23:59:00');
+  // Set the target date to November 24, 2024, at 11:59:00 PM
+  const targetDate = new Date('2024-11-24T23:59:00');
 
   useEffect(() => {
     // This check will only run on the client-side
