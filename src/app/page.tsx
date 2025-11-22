@@ -33,7 +33,7 @@ export default async function Home() {
   const tulipImage = "/tulips.png";
   
   return (
-    <div className="flex flex-col min-h-screen bg-background max-w-4xl mx-auto">
+    <div className="flex flex-col min-h-screen bg-background max-w-6xl mx-auto">
       <Header />
       <main className="flex-1">
         <section id="hero" className="relative overflow-hidden w-full py-20 md:py-32 lg:py-40 text-center animate-in fade-in duration-1000">
