@@ -77,9 +77,12 @@ export function Countdown({ targetDate }: CountdownProps) {
           <p className="font-body text-lg text-primary-foreground/80">Get ready for a special surprise!</p>
           <WishSubmissionDialog
             trigger={
-              <Button variant="ghost">
+              <Button 
+                variant="outline"
+                className="bg-white/10 border-white/20 text-white backdrop-blur-sm hover:bg-white/20 hover:text-white shadow-lg"
+              >
                 <Feather className="mr-2 h-4 w-4" />
-                Wish her (Rajanya) in advance
+                Wish Rajanya in advance
               </Button>
             }
           />
