@@ -45,6 +45,13 @@ export default async function Home() {
         <section id="hero" className="relative overflow-hidden w-full py-20 md:py-32 lg:py-40 text-center animate-in fade-in duration-1000">
           <div className="container px-4 md:px-6 relative z-10">
             <div className="space-y-4 max-w-3xl mx-auto">
+              <Image
+                src="/cat-img.png"
+                alt="A cute cat"
+                width={150}
+                height={150}
+                className="mx-auto rounded-full shadow-lg"
+              />
               <h1 className="font-headline text-4xl md:text-6xl lg:text-7xl tracking-tighter">
                 Happy Birthday, My Love
               </h1>
@@ -56,12 +63,12 @@ export default async function Home() {
           </div>
            {/* Floating Tulips */}
            <div className="absolute inset-0 z-0 pointer-events-none">
-            <Image src={tulipImage} alt="Floating Tulip" width={80} height={80} className="absolute tulip-1" />
-            <Image src={tulipImage} alt="Floating Tulip" width={60} height={60} className="absolute tulip-2" />
-            <Image src={tulipImage} alt="Floating Tulip" width={100} height={100} className="absolute tulip-3" />
-            <Image src={tulipImage} alt="Floating Tulip" width={70} height={70} className="absolute tulip-4" />
-            <Image src={tulipImage} alt="Floating Tulip" width={90} height={90} className="absolute tulip-5" />
-            <Image src={tulipImage} alt="Floating Tulip" width={50} height={50} className="absolute tulip-6" />
+            <Image src={tulipImage} alt="Floating Tulip" width={60} height={60} className="absolute tulip-1" />
+            <Image src={tulipImage} alt="Floating Tulip" width={40} height={40} className="absolute tulip-2" />
+            <Image src={tulipImage} alt="Floating Tulip" width={65} height={65} className="absolute tulip-3" />
+            <Image src={tulipImage} alt="Floating Tulip" width={50} height={50} className="absolute tulip-4" />
+            <Image src={tulipImage} alt="Floating Tulip" width={55} height={55} className="absolute tulip-5" />
+            <Image src={tulipImage} alt="Floating Tulip" width={35} height={35} className="absolute tulip-6" />
           </div>
         </section>
 
