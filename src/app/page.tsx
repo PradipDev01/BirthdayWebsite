@@ -36,7 +36,7 @@ async function getWishes(): Promise<Wish[]> {
 export default async function Home() {
   const wishes = await getWishes();
 
-  const tulipImage = "https://storage.googleapis.com/project-spark-325313.appspot.com/static/gen-ai/user-request-images/2024-05-22/3ca3123b-010f-488f-a3ac-173673752e50.png";
+  const tulipImage = "/tulips.png";
   
   return (
     <div className="flex flex-col min-h-screen bg-background">
