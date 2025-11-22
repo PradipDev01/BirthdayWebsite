@@ -1,34 +1,28 @@
 import { Header } from '@/components/header';
 import { PhotoGallery } from '@/components/photo-gallery';
 import { WishesDisplay, type Wish } from '@/components/wishes-display';
-import { getFirestore, collection, getDocs, orderBy, query, Timestamp } from 'firebase/firestore';
-import { app } from '@/lib/firebase';
+import clientPromise from '@/lib/mongodb';
 import { Flower2 } from 'lucide-react';
 import Image from 'next/image';
 
 async function getWishes(): Promise<Wish[]> {
   try {
-    const db = getFirestore(app);
-    const wishesCol = collection(db, 'wishes');
-    // The orderBy clause was removed to prevent a crash.
-    // A composite index is needed in Firestore to support this query.
-    const q = query(wishesCol, orderBy('createdAt', 'desc'));
-    const wishesSnapshot = await getDocs(q);
-    const wishesList = wishesSnapshot.docs.map(doc => {
-      const data = doc.data();
-      const createdAt = data.createdAt as Timestamp | undefined;
-      return {
-        id: doc.id,
-        name: data.name,
-        message: data.message,
-        createdAt: createdAt ? createdAt.toDate().toISOString() : new Date().toISOString(),
-      };
-    });
-    return wishesList;
+    const client = await clientPromise;
+    const db = client.db();
+    const wishes = await db
+      .collection('wishes')
+      .find({})
+      .sort({ createdAt: -1 })
+      .toArray();
+
+    return wishes.map((wish) => ({
+      id: wish._id.toString(),
+      name: wish.name,
+      message: wish.message,
+      createdAt: wish.createdAt.toISOString(),
+    }));
   } catch (error) {
     console.error("Error fetching wishes: ", error);
-    // In a real app, you'd want better error handling.
-    // For now, we'll return an empty array if Firestore isn't configured.
     return [];
   }
 }
@@ -58,7 +52,6 @@ export default async function Home() {
               <p className="font-body text-lg md:text-xl text-muted-foreground">
                 Wishing you a day as beautiful as you are. Here's a small gallery of our moments and wishes from everyone who loves you.
               </p>
-              <Flower2 className="h-12 w-12 mx-auto text-primary" />
             </div>
           </div>
            {/* Floating Tulips */}
