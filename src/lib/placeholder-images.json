@@ -2,7 +2,7 @@
   "placeholderImages": [
     {
       "id": "1",
-      "description": "A beautiful day",
+      "description": "Us against the world",
       "imageUrl": "/rajanya1.jpg",
       "imageHint": "woman smiling"
     },
@@ -20,7 +20,7 @@
     },
     {
       "id": "4",
-      "description": "Us against the world",
+      "description": "A beautiful day",
       "imageUrl": "/rajanya4.jpg",
       "imageHint": "couple hug"
     }
